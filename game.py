@@ -39,6 +39,7 @@ file_list = data.splitlines()
 @bot.event
 async def on_ready():
     print("마이야히 마이야하")
+    await message.channel.send("뿜!")
 
 if(True):
     bad = ['ㅅㅂ','시발','씨발',"시바", "새끼", "병신", "ㅅㄲ","ㅂㅅ","새1끼", "씨1발","병1신","시1발","시1바"] 
