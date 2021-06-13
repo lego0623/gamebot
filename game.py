@@ -4,7 +4,7 @@ from discord import channel
 from discord.ext import commands
 from discord.utils import deprecated
 import time
-import random
+# import random
 
 game = discord.Game("!!명령어 입력")
 bot = commands.Bot(command_prefix='!!',Status = discord.Status.online, activity = game, help_command = None)
@@ -227,18 +227,18 @@ async def on_message(message): ##### remove bad words
                                     del end_bind_list
                                     del end_bind_time
                                     del end_bind_score
-    if(True): # 복불복
-        if(message.content.startswith('' + prefix + '복불복 ')):
-            try:
-                if(int(message.content[6:len(message.content)])):
-                    pass
-                total = int(message.content[6:len(message.content)])
-                if(random.randrange(0, total) == 0):
-                    await message.channel.send("당첨되셨습니다!")
-                else:
-                    await message.channel.send("꽝!")
-            except:
-                await message.channel.send("* @@복불복 (숫자)의 형태로 적어주세요. (확률: 1/(숫자))")
+    # if(True): # 복불복
+    #     if(message.content.startswith('' + prefix + '복불복 ')):
+    #         try:
+    #             if(int(message.content[6:len(message.content)])):
+    #                 pass
+    #             total = int(message.content[6:len(message.content)])
+    #             if(random.randrange(0, total) == 0):
+    #                 await message.channel.send("당첨되셨습니다!")
+    #             else:
+    #                 await message.channel.send("꽝!")
+    #         except:
+    #             await message.channel.send("* @@복불복 (숫자)의 형태로 적어주세요. (확률: 1/(숫자))")
     if(message.content == "" + prefix + "도움_명령어"):
         embed = discord.Embed(title=f"명령어", descriotion=f"도리도리봇", Color=0xf3bb76)
         embed.add_field(name=f"-" + prefix + "끝말잇기_규칙",value=f"끝말잇기 규칙", inline=False)
