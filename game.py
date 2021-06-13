@@ -251,6 +251,7 @@ async def on_message(message): ##### remove bad words
         embed.add_field(name=f"-" + prefix + "숫자야구_시작",value=f"숫자야구를 시작한다. (AI)", inline=False)
         embed.add_field(name=f"-" + prefix + "ㄹ",value=f"" + prefix + "ㄹ (숫자)로 여부를 알수 있다.", inline=False)
         embed.add_field(name=f"-" + prefix + "ㄹ !포기!",value=f"숫자야구에서 항복을 요청한다.", inline=False)
+        await message.channel.send(embed=embed)
     if(message.content == "" + prefix + "숫자야구_규칙"):
         embed = discord.Embed(title=f"숫자야구_규칙", descriotion=f"도리도리봇", Color=0xf3bb76)
         embed.add_field(name=f"규칙 (1)",value=f"숫자는 3자리 수임(000~999)", inline=False)
@@ -259,16 +260,19 @@ async def on_message(message): ##### remove bad words
         embed.add_field(name=f"게임규칙 (2)",value=f"숫자가 정답숫자의 포함되어있고 위치도 같으면 1스트라이크(예: (정답: 1xx), (자신의 답: 1xx))", inline=False)
         embed.add_field(name=f"게임규칙 (3)",value=f"숫자가 정답숫자의 포함되어있지않으면 없음(만일 3가지 숫자다 없을 경우 아웃(예: (정답: 123), (자신의 답: 456))", inline=False)
         embed.add_field(name=f"게임규칙 (4)",value=f"모든 숫자의 위치가 같으면 3스트라이크 즉 게임 승(예: (정답: 123), (자신의 답: 123))", inline=False)
+        await message.channel.send(embed=embed)
     if(message.content == "" + prefix + "끝말잇기_게임방법"):
         embed = discord.Embed(title=f"끝말잇기_사용방법", descriotion=f"도리도리봇", Color=0xf3bb76)
         embed.add_field(name=f"-" + prefix + "끝말잇기_시작",value=f"끝말잇기를 시작한다. (AI)", inline=False)
         embed.add_field(name=f"-" + prefix + "ㅇ",value=f"" + prefix + "ㅇ (단어)로 끝말잇기를 이어갈 수 있다.", inline=False)
         embed.add_field(name=f"-" + prefix + "ㅇ !포기!",value=f"끝말잇기에서 항복을 요청한다.", inline=False)
+        await message.channel.send(embed=embed)
     if(message.content == "" + prefix + "끝말잇기 규칙"):
         embed = discord.Embed(title=f"끝말잇기_규칙", descriotion=f"도리도리봇", Color=0xf3bb76)
         embed.add_field(name=f"규칙 (1)",value=f"제시된 단어의 끝말을 잇는 단어를 말한다.", inline=False)
         embed.add_field(name=f"규칙 (2)",value=f"제한시간은 10초이다.", inline=False)
         embed.add_field(name=f"유의사항",value=f"단어가 봇의 데이터에 없을 수도 있다. 그럴때는 억울해 하면된다.", inline=False)
+        await message.channel.send(embed=embed)
 
 def password2():
     a = "01011010100010011001100110100101100011001001011110111101010110101100100110011011101101011000001010001111101111000101100001101000111110111110010101101100100001011011100100111000110111010101101101011000011000000101011110011100000100000001110010000000010100010110000100000101100010100111101011001000100100101101000011000110010111101011001001110100001101011010000010000010001001011101000010000001010001100010100101011"
