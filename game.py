@@ -32,14 +32,14 @@ prefix = "@@"
 
 alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"," ",".","?","!","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","_"]
 
-with open(r'C:\Users\owner\Documents\GitHub\gamebot\words.txt', 'r', encoding='UTF8') as f:
+with open('words.txt', 'rt', encoding='UTF8') as f:
     data = f.read()
 file_list = data.splitlines()
 
 @bot.event
 async def on_ready():
     print("마이야히 마이야하")
-    await message.channel.send("뿜!")
+    # await message.channel.send("뿜!")
 
 if(True):
     bad = ['ㅅㅂ','시발','씨발',"시바", "새끼", "병신", "ㅅㄲ","ㅂㅅ","새1끼", "씨1발","병1신","시1발","시1바"] 
