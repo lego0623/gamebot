@@ -238,19 +238,19 @@ async def on_message(message): ##### remove bad words
                     await message.channel.send("꽝!")
             except:
                 await message.channel.send("* @@복불복 (숫자)의 형태로 적어주세요. (확률: 1/(숫자))")
-    if(message == "" + prefix + "도움_명령어"):
+    if(message.content == "" + prefix + "도움_명령어"):
         embed = discord.Embed(title=f"명령어", descriotion=f"도리도리봇", Color=0xf3bb76)
-        embed.add_field(name=f"-!!끝말잇기_규칙",value=f"끝말잇기 규칙", inline=False)
-        embed.add_field(name=f"-!!끝말잇기_게임방법",value=f"끝말잇기 게임방법", inline=False)
-        embed.add_field(name=f"-!!숫자야구_규칙",value=f"숫자야구 규칙", inline=False)
-        embed.add_field(name=f"-!!숫자야구_게임방법",value=f"숫자야구 게임방법", inline=False)
+        embed.add_field(name=f"-" + prefix + "끝말잇기_규칙",value=f"끝말잇기 규칙", inline=False)
+        embed.add_field(name=f"-" + prefix + "끝말잇기_게임방법",value=f"끝말잇기 게임방법", inline=False)
+        embed.add_field(name=f"-" + prefix + "숫자야구_규칙",value=f"숫자야구 규칙", inline=False)
+        embed.add_field(name=f"-" + prefix + "숫자야구_게임방법",value=f"숫자야구 게임방법", inline=False)
         await message.channel.send(embed=embed)
-    if(message == "" + prefix + "숫자야구_게임방법"):
+    if(message.content == "" + prefix + "숫자야구_게임방법"):
         embed = discord.Embed(title=f"숫자야구_사용방법", descriotion=f"도리도리봇", Color=0xf3bb76)
-        embed.add_field(name=f"-!!숫자야구_시작",value=f"숫자야구를 시작한다. (AI)", inline=False)
-        embed.add_field(name=f"-!!ㄹ",value=f"!!ㄹ (숫자)로 여부를 알수 있다.", inline=False)
-        embed.add_field(name=f"-!!ㄹ !포기!",value=f"숫자야구에서 항복을 요청한다.", inline=False)
-    if(message == "" + prefix + "숫자야구_규칙"):
+        embed.add_field(name=f"-" + prefix + "숫자야구_시작",value=f"숫자야구를 시작한다. (AI)", inline=False)
+        embed.add_field(name=f"-" + prefix + "ㄹ",value=f"" + prefix + "ㄹ (숫자)로 여부를 알수 있다.", inline=False)
+        embed.add_field(name=f"-" + prefix + "ㄹ !포기!",value=f"숫자야구에서 항복을 요청한다.", inline=False)
+    if(message.content == "" + prefix + "숫자야구_규칙"):
         embed = discord.Embed(title=f"숫자야구_규칙", descriotion=f"도리도리봇", Color=0xf3bb76)
         embed.add_field(name=f"규칙 (1)",value=f"숫자는 3자리 수임(000~999)", inline=False)
         embed.add_field(name=f"규칙 (2)",value=f"제한 시간은 없음", inline=False)
@@ -258,12 +258,12 @@ async def on_message(message): ##### remove bad words
         embed.add_field(name=f"게임규칙 (2)",value=f"숫자가 정답숫자의 포함되어있고 위치도 같으면 1스트라이크(예: (정답: 1xx), (자신의 답: 1xx))", inline=False)
         embed.add_field(name=f"게임규칙 (3)",value=f"숫자가 정답숫자의 포함되어있지않으면 없음(만일 3가지 숫자다 없을 경우 아웃(예: (정답: 123), (자신의 답: 456))", inline=False)
         embed.add_field(name=f"게임규칙 (4)",value=f"모든 숫자의 위치가 같으면 3스트라이크 즉 게임 승(예: (정답: 123), (자신의 답: 123))", inline=False)
-    if(message == "" + prefix + "끝말잇기_게임방법"):
+    if(message.content == "" + prefix + "끝말잇기_게임방법"):
         embed = discord.Embed(title=f"끝말잇기_사용방법", descriotion=f"도리도리봇", Color=0xf3bb76)
-        embed.add_field(name=f"-!!끝말잇기_시작",value=f"끝말잇기를 시작한다. (AI)", inline=False)
-        embed.add_field(name=f"-!!ㅇ",value=f"!!ㅇ (단어)로 끝말잇기를 이어갈 수 있다.", inline=False)
-        embed.add_field(name=f"-!!ㅇ !포기!",value=f"끝말잇기에서 항복을 요청한다.", inline=False)
-    if(message == "" + prefix + "끝말잇기 규칙"):
+        embed.add_field(name=f"-" + prefix + "끝말잇기_시작",value=f"끝말잇기를 시작한다. (AI)", inline=False)
+        embed.add_field(name=f"-" + prefix + "ㅇ",value=f"" + prefix + "ㅇ (단어)로 끝말잇기를 이어갈 수 있다.", inline=False)
+        embed.add_field(name=f"-" + prefix + "ㅇ !포기!",value=f"끝말잇기에서 항복을 요청한다.", inline=False)
+    if(message.content == "" + prefix + "끝말잇기 규칙"):
         embed = discord.Embed(title=f"끝말잇기_규칙", descriotion=f"도리도리봇", Color=0xf3bb76)
         embed.add_field(name=f"규칙 (1)",value=f"제시된 단어의 끝말을 잇는 단어를 말한다.", inline=False)
         embed.add_field(name=f"규칙 (2)",value=f"제한시간은 10초이다.", inline=False)
