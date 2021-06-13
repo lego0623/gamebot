@@ -4,7 +4,7 @@ from discord import channel
 from discord.ext import commands
 from discord.utils import deprecated
 import time
-# import random
+import random
 
 game = discord.Game("!!명령어 입력")
 bot = commands.Bot(command_prefix='!!',Status = discord.Status.online, activity = game, help_command = None)
