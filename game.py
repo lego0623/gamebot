@@ -273,7 +273,7 @@ async def on_message(message): ##### remove bad words
         embed.add_field(name=f"-" + prefix + "ㅇ",value=f"" + prefix + "ㅇ (단어)로 끝말잇기를 이어갈 수 있다.", inline=False)
         embed.add_field(name=f"-" + prefix + "ㅇ !포기!",value=f"끝말잇기에서 항복을 요청한다.", inline=False)
         await message.channel.send(embed=embed)
-    if(message.content == "" + prefix + "끝말잇기 규칙"):
+    if(message.content == "" + prefix + "끝말잇기_규칙"):
         embed = discord.Embed(title=f"끝말잇기_규칙", descriotion=f"도리도리봇", Color=0xf3bb76)
         embed.add_field(name=f"규칙 (1)",value=f"제시된 단어의 끝말을 잇는 단어를 말한다.", inline=False)
         embed.add_field(name=f"규칙 (2)",value=f"제한시간은 10초이다.", inline=False)
