@@ -29,6 +29,8 @@ if(True): # 숫자야구 변수
 game = discord.Game("@@명령어 입력!")
 bot = commands.Bot(command_prefix='@@',Status=discord.Status.online,activity=game,help_command=None)
 prefix = "@@"
+guild_list = []
+guild_list_bool = []
 
 alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"," ",".","?","!","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","_"]
 
@@ -45,17 +47,23 @@ if(True):
     bad = ['ㅅㅂ','시발','씨발',"시바", "새끼", "병신", "ㅅㄲ","ㅂㅅ","새1끼", "씨1발","병1신","시1발","시1바"] 
 @bot.event
 async def on_message(message): ##### remove bad words 
+    print(message.guild.name)
+    if(not message.guild.name in guild_list):
+        guild_list.append(message.guild.name)
+        guild_list_bool.append(True)
     if(True): # 필터
-        message_contant=message.content 
-        for i in bad: 
-            if i in message_contant: 
-                if message.author.dm_channel:
-                    await message.author.dm_channel.send("욕 좀 고마해라")
-                elif message.author.dm_channel is None:
-                    channel = await message.author.create_dm()
-                    await channel.send("욕 좀 고마해라")
-                await message.channel.send('욕 필터링 ㅅㄱ') 
-                await message.delete()
+        user_id_base3 = guild_list.index(message.guild.name) 
+        if(guild_list_bool[user_id_base3]):
+            message_contant=message.content 
+            for i in bad: 
+                if i in message_contant: 
+                    if message.author.dm_channel:
+                        await message.author.dm_channel.send("욕 좀 고마해라")
+                    elif message.author.dm_channel is None:
+                        channel = await message.author.create_dm()
+                        await channel.send("욕 좀 고마해라")
+                    await message.channel.send('욕 필터링 ㅅㄱ') 
+                    await message.delete()
     if(True):
         global num_base_ready
         global num_baseing
@@ -233,24 +241,25 @@ async def on_message(message): ##### remove bad words
                                     del end_bind_list
                                     del end_bind_time
                                     del end_bind_score
-    # if(True): # 복불복
-    #     if(message.content.startswith('' + prefix + '복불복 ')):
-    #         try:
-    #             if(int(message.content[6:len(message.content)])):
-    #                 pass
-    #             total = int(message.content[6:len(message.content)])
-    #             if(random.randrange(0, total) == 0):
-    #                 await message.channel.send("당첨되셨습니다!")
-    #             else:
-    #                 await message.channel.send("꽝!")
-    #         except:
-    #             await message.channel.send("* @@복불복 (숫자)의 형태로 적어주세요. (확률: 1/(숫자))")
+    if(True): # 복불복
+        if(message.content.startswith('' + prefix + '복불복 ')):
+            try:
+                if(int(message.content[6:len(message.content)])):
+                    pass
+                total = int(message.content[6:len(message.content)])
+                if(random.randrange(0, total) == 0):
+                    await message.channel.send("당첨되셨습니다!")
+                else:
+                    await message.channel.send("꽝!")
+            except:
+                await message.channel.send("* @@복불복 (숫자)의 형태로 적어주세요. (확률: 1/(숫자))")
     if(message.content == "" + prefix + "도움_명령어"):
         embed = discord.Embed(title=f"명령어", descriotion=f"도리도리봇", Color=0xf3bb76)
         embed.add_field(name=f"-" + prefix + "끝말잇기_규칙",value=f"끝말잇기 규칙", inline=False)
         embed.add_field(name=f"-" + prefix + "끝말잇기_게임방법",value=f"끝말잇기 게임방법", inline=False)
         embed.add_field(name=f"-" + prefix + "숫자야구_규칙",value=f"숫자야구 규칙", inline=False)
         embed.add_field(name=f"-" + prefix + "숫자야구_게임방법",value=f"숫자야구 게임방법", inline=False)
+        embed.add_field(name=f"-" + prefix + "복불복_게임방법",value=f"복불복 게임방법", inline=False)
         await message.channel.send(embed=embed)
     if(message.content == "" + prefix + "숫자야구_게임방법"):
         embed = discord.Embed(title=f"숫자야구_사용방법", descriotion=f"도리도리봇", Color=0xf3bb76)
@@ -279,6 +288,18 @@ async def on_message(message): ##### remove bad words
         embed.add_field(name=f"규칙 (2)",value=f"제한시간은 10초이다.", inline=False)
         embed.add_field(name=f"유의사항",value=f"단어가 봇의 데이터에 없을 수도 있다. 그럴때는 억울해 하면된다.", inline=False)
         await message.channel.send(embed=embed)
+    if(message.content == "" + prefix + "복불복_규칙"):
+        embed = discord.Embed(title=f"복불복_게임방법", descriotion=f"도리도리봇", Color=0xf3bb76)
+        embed.add_field(name=f"명령어",value=f"@@복불복 (숫자) (확률은 1/(숫자)임)", inline=False)
+        await message.channel.send(embed=embed)
+    if(message.content == "" + prefix + "욕차단_off" and str(message.author.name) == "1900원"):
+        user_id_base3 = guild_list.index(message.guild.name) 
+        guild_list_bool[user_id_base3] = False
+        await message.channel.send("욕차단 기능이 꺼졌습니다.")
+    if(message.content == "" + prefix + "욕차단_on" and str(message.author.name) == "1900원"):
+        user_id_base3 = guild_list.index(message.guild.name) 
+        guild_list_bool[user_id_base3] = True
+        await message.channel.send("욕차단 기능이 활성화되었습니다.")
 
 def password2():
     a = "01011010100010011001100110100101100011001001011110111101010110101100100110011011101101011000001010001111101111000101100001101000111110111110010101101100100001011011100100111000110111010101101101011000011000000101011110011100000100000001110010000000010100010110000100000101100010100111101011001000100100101101000011000110010111101011001001110100001101011010000010000010001001011101000010000001010001100010100101011"
