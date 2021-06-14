@@ -162,6 +162,8 @@ async def on_message(message): ##### remove bad words
             end_binding.append(True)
             end_bind_time.append(True)
             end_bind_user.append(str(message.author))
+            end_bind_list.append([])
+            end_bind_score.append(0)
             first_word = file_list[random.randrange(0, len(file_list))]
             # random.range()
             await message.channel.send("제시어: " + first_word + "")
@@ -172,9 +174,11 @@ async def on_message(message): ##### remove bad words
             # print(end_bind_end)
             print(str(message.content[len(str(message.content))-1]))
             aghdg = []
-            if(message.author in end_bind_user):
-                user_id_base2 = end_bind_user.index(message.author)
+            if(str(message.author) in end_bind_user):
+                user_id_base2 = end_bind_user.index(str(message.author))
+                print(end_bind_user)
                 if(end_binding[user_id_base2]):
+                    print(end_binding)
                     if(str(message.content) == "" + prefix + "ㅇ !포기!"):
                         if(end_bind_time[user_id_base2]):
                             await message.channel.send(content='당신이 졌군요 /' + str(end_bind_score[user_id_base2]) + '점/패배')
@@ -186,8 +190,10 @@ async def on_message(message): ##### remove bad words
                             del end_bind_time
                             del end_bind_score
                     else:
-                        if(str(message.content[4]) == end_bind_end[user_id_base2][len(end_bind_end)-1] and str(message.author) == end_bind_user[user_id_base2]):
+                        # print(str(message.content[4]), (end_bind_end[user_id_base2])[len(end_bind_end)-1],len(end_bind_end)-1)
+                        if(str(message.content[4]) == (end_bind_end[user_id_base2])[len(end_bind_end[user_id_base2])-1]): # and str(message.author) == end_bind_user[user_id_base2]
                             print("asdfds")
+                            print(end_bind_list[user_id_base2])
                             if(message.content[4:len(message.content)] in file_list and not message.content[4:len(message.content)] in end_bind_list[user_id_base2]):
                                 end_bind_time[user_id_base2] = False
                                 end_bind_score[user_id_base2] += 1
