@@ -44,7 +44,7 @@ async def on_ready():
     # await message.channel.send("뿜!")
 
 if(True):
-    bad = ['ㅅㅂ','시발','씨발',"시바", "새끼", "병신", "ㅅㄲ","ㅂㅅ","새1끼", "씨1발","병1신","시1발","시1바"] 
+    bad = ['ㅅㅂ','시발','씨발',"시바", "새끼", "병신", "ㅅㄲ","ㅂㅅ","새1끼", "씨1발","병1신","시1발","시1바","ㅂ1신","좆","tlqkf","Tlqkf","Fuck","fuck","shit"] 
 @bot.event
 async def on_message(message): ##### remove bad words 
     print(message.guild.name)
@@ -304,6 +304,12 @@ async def on_message(message): ##### remove bad words
         user_id_base3 = guild_list.index(message.guild.name) 
         guild_list_bool[user_id_base3] = True
         await message.channel.send("이잉 치킹 이잉 치킹 응애 치킹")
+    if(message.content == "" + prefix + "혁명" and str(message.author.name) == "1900원"):
+        async def HumanRole(ctx, member: discord.Member=None):
+            print("A")
+            member = member or ctx.message.author
+            await member.add_roles(get(ctx.guild.roles, name="뽀로로"))
+            await ctx.channel.send(str(member)+"에게 역할이 적용되었습니다.")
 
 
 def password2():
